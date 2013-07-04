@@ -202,9 +202,50 @@ public class ImageViewSwipeActivity extends Activity implements
 		case (2): {
 			if (parent) {
 				System.out.println(path);
+				String library = "presentations.txt";
 				
+			try {
+				Bundle b = getIntent().getExtras();
+				if (b != null && b.getString("key") != null) {
+					path = path + b.getString("key");
+					parent = false;
+				}
+
+				BufferedReader reader = new BufferedReader(new FileReader(path + library));
+
+				int i = 0;
+				String bild = null;
+				minabilder = new Bilder[50];
+				String line = reader.readLine();
+				while (line != null) {
+
+					String[] lineA = line.split(",");
+					if (lineA.length < 6)
+						break;
+					int andra = Integer.parseInt(lineA[1]);
+					bild = path + lineA[0] + ".PNG";
+					minabilder[i] = new Bilder(bild, andra, lineA[2],
+							Integer.parseInt(lineA[3]), Integer.parseInt(lineA[4]),
+							Integer.parseInt(lineA[5]), Integer.parseInt(lineA[6]
+									.trim()));
+					i += 1;
+					line = reader.readLine();
+				}
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+				gridIntent = new Intent(ImageViewSwipeActivity.this,
+						GridViewActivity.class);
 
 				startActivityForResult(gridIntent, 1);
+
+			//	startActivityForResult(gridIntent, 1);
 
 			}
 
