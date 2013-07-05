@@ -2,6 +2,7 @@ package com.materna.ImageViewSwipe;
 
 class Bilder {
 	private String imageid;
+	private String thumb;
 	private int typ;
 	private String url;
 	private int nextup;
@@ -9,7 +10,8 @@ class Bilder {
 	private int nextright;
 	private int nextleft;
 	
-	public Bilder (String imageid, int bildtyp, String urlarg,int up, int down, int right, int left){
+	public Bilder (String thumb,String imageid, int bildtyp, String urlarg,int up, int down, int right, int left){
+		this.thumb = thumb;
 		this.imageid=imageid;
 		typ=bildtyp;
 		url=urlarg;
@@ -17,6 +19,10 @@ class Bilder {
 		nextdown=down;
 		nextright=right;
 		nextleft=left;
+	}
+	
+	public String getThumb(){
+		return thumb;
 	}
 	/**
 	 * 

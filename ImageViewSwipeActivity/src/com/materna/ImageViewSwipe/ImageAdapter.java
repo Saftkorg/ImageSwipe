@@ -22,8 +22,8 @@ public class ImageAdapter extends BaseAdapter {
     public ImageAdapter(Context c) {
         mContext = c;
         //bf =  new BitmapFactory();
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize= 4;
+        //BitmapFactory.Options options = new BitmapFactory.Options();
+        //options.inSampleSize= 4;
 		Bilder[] minabilder = ImageViewSwipeActivity.minabilder;
 		List<Integer> drawablesId = new ArrayList<Integer>();
 		mySDCardImages = new Vector<ImageView>();
@@ -33,7 +33,7 @@ public class ImageAdapter extends BaseAdapter {
 			
 					   ImageView myImageView = new ImageView(mContext);
 					   
-					   myImageView.setImageBitmap(BitmapFactory.decodeFile(i.getimage(), options)) ;
+					   myImageView.setImageBitmap(BitmapFactory.decodeFile(i.getThumb())) ;
 					   //setImageDrawable(resize(i.getimage()));
 					   myImageView.setId(picIndex);
 					   drawablesId.add(picIndex);
